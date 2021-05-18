@@ -253,6 +253,8 @@ public class MP3Player {
             return;
         }
 
+
+
         // Sets the song queue to the playlist and sets the playNextSong to true
         songQueue = playlistSongs;
         boolean playNextSong = true;

@@ -4,12 +4,12 @@ import java.util.*;
 
 /**
  * TODO FOR HOMEWORK - SongDatabase.java
- *      [ ] Complete the 'addSong' method
- *      [ ] Throw an IllegalArgumentException when a playlist of the given name already exists in the 'createPlaylist' method
- *      [ ] Complete the 'getPlaylist' method
- *      [ ] Complete the 'addSongToPlaylist' method
- *      [ ] Complete the 'findSongByName' method
- *      [ ] Complete the 'findSongByArtist' method
+ *      [x] Complete the 'addSong' method
+ *      [x] Throw an IllegalArgumentException when a playlist of the given name already exists in the 'createPlaylist' method
+ *      [x] Complete the 'getPlaylist' method
+ *      [x] Complete the 'addSongToPlaylist' method
+ *      [x] Complete the 'findSongByName' method
+ *      [x] Complete the 'findSongByArtist' method
  */
 public class SongDatabase {
     /**
@@ -69,9 +69,7 @@ public class SongDatabase {
      * Adds the given song to the song archive
      * @param newSong The song to be added
      */
-    public void addSong(Song newSong) {
-        // TODO FOR HOMEWORK: Add the given song to the song archive
-    }
+    public void addSong(Song newSong) { songArchive.add(newSong); }
 
     /**
      * Deletes the given song from all playlists and the song archive
@@ -117,7 +115,7 @@ public class SongDatabase {
     public void createPlaylist(String playlistName) throws IllegalArgumentException {
         // Checks if the playlists already has a key for the given playlist name
         if (playlists.containsKey(playlistName)) {
-            // TODO FOR HOMEWORK: Throw the IllegalArgumentException with a custom message
+            throw new IllegalArgumentException("Playlist already exists with the given name.");
         }
 
         // Puts the playlist name into the playlists and maps it to a new empty list of songs
@@ -132,9 +130,13 @@ public class SongDatabase {
      */
     public List<Song> getPlaylist(String playlistName) {
         // TODO FOR HOMEWORK: Add the conditional for returning the playlist
-
-        // Returns null if no songs are found for the given playlist name
-        return null;
+            if(playlists.containsKey(playlistName)){
+                return playlists.get(playlistName);
+            }
+            else{
+                // Returns null if no songs are found for the given playlist name
+                return null;
+            }
     }
 
     /**
@@ -160,6 +162,19 @@ public class SongDatabase {
      */
     public void addSongToPlaylist(Song newSong, String playlistName) {
         // TODO FOR HOMEWORK: Add the given song to the playlist of the given name
+
+        // If playlists doesn't contain a playlist by this name, create it.
+        if(!playlists.containsKey(playlistName)){
+            createPlaylist(playlistName);
+        }
+
+        // If song archive doesn't contain the new song, add it.
+        if(!songArchive.contains(newSong)){
+            addSong(newSong);
+        }
+
+        // Now that we've assured song and playlist exist, add the song to the playlist.
+            playlists.get(playlistName).add(newSong);
     }
 
     /**
@@ -199,7 +214,16 @@ public class SongDatabase {
      */
     public List<Song> findSongByName(String songName) {
         // TODO FOR HOMEWORK: Remove the line below, and return a list of songs that match the given song name
-        return null;
+
+      List<Song> foundSongs = new ArrayList<Song>();
+
+        for (Song song : songArchive){
+            if(song.getName().equals(songName)){
+                foundSongs.add(song);
+            }
+        }
+
+        return foundSongs;
     }
 
     /**
@@ -210,7 +234,16 @@ public class SongDatabase {
      */
     public List<Song> findSongsByArtist(String artist) {
         // TODO FOR HOMEWORK: Remove the line below, and return a list of songs that match the given artist
-        return null;
+
+        List<Song> foundSongs = new ArrayList<Song>();
+
+        for (Song song : songArchive){
+            if(song.getArtist().equals(artist)){
+                foundSongs.add(song);
+            }
+        }
+
+        return foundSongs;
     }
 
     /**

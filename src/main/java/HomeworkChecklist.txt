@@ -1,41 +1,48 @@
 TODO HOMEWORK CHECKLIST:
 PROGRAMMING TASKS:
     SongDatabase.java
-        [ ] Complete the 'addSong' method
-        [ ] Throw an IllegalArgumentException when a playlist of the given name already exists in the 'createPlaylist' method
-        [ ] Complete the 'getPlaylist' method
-        [ ] Complete the 'addSongToPlaylist' method
-        [ ] Complete the 'findSongByName' method
-        [ ] Complete the 'findSongByArtist' method
+        [x] Complete the 'addSong' method
+        [x] Throw an IllegalArgumentException when a playlist of the given name already exists in the 'createPlaylist' method
+        [x] Complete the 'getPlaylist' method
+        [x] Complete the 'addSongToPlaylist' method
+        [x] Complete the 'findSongByName' method
+        [x] Complete the 'findSongByArtist' method
     MP3Player.java
-        [ ] Run the 'main' method and try multiple work flows
+        [x] Run the 'main' method and try multiple work flows
 
 TEST TASKS:
     SongDatabaseTest.java
-        [ ] Write the 'testAddDeleteSong' test method
-        [ ] Write the 'testAddGetDeletePlaylist' test method
-        [ ] Run every other test
+        [x] Write the 'testAddDeleteSong' test method
+        [x] Write the 'testAddGetDeletePlaylist' test method
+        [x] Run every other test
 
 SHORT ANSWERS:
     // TODO FOR HOMEWORK: Answer each question, and note many don't have a 'right answer' so just answer honestly
     [ ] The MP3Player is a console application, what features do you wish were added?
-        // ANSWER HERE:
+        // ANSWER HERE: I would definitely add a 'previous' option to the play menu, and if this were actually
+                        playing music, the option to 'loop' a song as well as to pause.
 
-    [ ] Pick any feature you mentioned in the last question. Do you think you could implement that feature with your current knowledge? If yes explain the basic thought processing of adding that feature, if not explain why.
-        // ANSWER HERE:
+    [ ] Pick any feature you mentioned in the last question. Do you think you could implement that feature with your current knowledge?
+        If yes explain the basic thought processing of adding that feature, if not explain why.
+        // ANSWER HERE: I could definitely implement a 'previous' button. It would mean reworking the MP3Player.playPlaylist() method.
+                        Instead of removing the songs from the queue as they're played, I could track the current index of songQueue,
+                        and depending on if the user selected next or previous, I could use a conditional to ++ or -- the index and
+                        play the song via songQueue.get(i);
 
     [ ] What is a loop?
-        // ANSWER HERE:
+        // ANSWER HERE: Code that will run repeatedly, until its conditions are met or infinitely.
 
     [ ] Write what each of these loops does in your own words:
-        // FOR LOOP:
-        // WHILE LOOP:
-        // DO WHILE:
+        // FOR LOOP: For a determined number of iterations, repeat the loop, and (typically) increment/decrement the 3rd statement after the loop has executed.
+        // WHILE LOOP: While the condition remains true, repeat the loop.
+        // DO WHILE: Do step 1 at least once, check if the while loop condition is true, and repeat the loop as long as it remains true.
 
     [ ] Why were 'infinite loops' used in this project? (See UserHelperMethods.displayOptionsAndWaitForValidOption(String[] options) for a reference)
-        // ANSWER HERE:
+        // ANSWER HERE: Getting a valid user input can feel like pulling teeth. The 'infinite loop' here looks like
+                        it serves the purpose of getting a valid input.
 
     [ ] This project has 3 packages (models, resources, and utils). Describe each one.
-        // MODELS:
-        // RESOURCES:
-        // UTILS:
+        // MODELS: Contains our classes, including all the application logic and the main method to start our program. 
+        // RESOURCES: Contains our static strings for displaying to the user.
+        // UTILS: Contains helper methods with minimal logic in them, basically the methods that format our
+                  info for the user.
